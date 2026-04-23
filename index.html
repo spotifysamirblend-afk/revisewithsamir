@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>GCSE 2026 Revision Dashboard</title>
+<title>GCSE 2026 Revision Planner</title>
 
 <style>
   body {
@@ -19,55 +19,53 @@
     background: linear-gradient(90deg, #2563eb, #7c3aed);
   }
 
-  h1 {
-    margin: 0;
-    font-size: 2rem;
-  }
+  h1 { margin: 0; }
 
   .container {
     padding: 20px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
   }
 
-  .phase {
-    margin-bottom: 40px;
+  .week {
+    margin-bottom: 35px;
   }
 
-  .phase-title {
-    font-size: 1.3rem;
-    margin: 15px 0;
+  .week-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
     color: #93c5fd;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
   }
 
-  .card {
-    padding: 15px;
-    border-radius: 12px;
+  .day {
     background: #111827;
+    border-radius: 12px;
+    padding: 10px;
+    min-height: 120px;
     border: 1px solid #1f2937;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    transition: 0.2s;
   }
 
-  .card:hover {
-    transform: scale(1.02);
+  .date {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 6px;
   }
 
-  .subject {
-    display: inline-block;
-    padding: 5px 10px;
+  .slot {
+    margin: 6px 0;
+    padding: 6px;
     border-radius: 8px;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: bold;
-    margin-bottom: 8px;
   }
 
+  /* SUBJECT COLOURS */
   .Maths { background:#f59e0b; }
   .Physics { background:#3b82f6; }
   .Chemistry { background:#10b981; }
@@ -79,15 +77,10 @@
   .PE { background:#eab308; }
   .Further { background:#ec4899; }
 
-  .countdown {
-    margin-top: 10px;
-    font-size: 0.9rem;
+  .exam {
+    margin-top: 8px;
+    font-size: 0.75rem;
     color: #cbd5e1;
-  }
-
-  .date {
-    font-size: 0.85rem;
-    opacity: 0.7;
   }
 </style>
 </head>
@@ -95,107 +88,142 @@
 <body>
 
 <header>
-  <h1>📚 GCSE 2026 Revision Dashboard</h1>
-  <p>Live countdown to every exam — stay ahead</p>
+  <h1>📚 GCSE 2026 Revision Planner</h1>
+  <p>2 subjects per day · evenly structured · exam-linked</p>
 </header>
 
 <div class="container">
 
-  <div class="phase">
-    <div class="phase-title">PHASE 1 — PRE-EXAM PUSH</div>
+  <!-- WEEK 1 -->
+  <div class="week">
+    <div class="week-title">WEEK 1 — Apr 25–27</div>
+
     <div class="grid">
 
-      <div class="card" data-date="2026-04-25T09:00:00">
-        <div class="subject Maths">Maths</div>
-        <div class="date">Fri 25 Apr</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Fri 25</div>
+        <div class="slot Maths">Maths</div>
+        <div class="slot Physics">Physics</div>
       </div>
 
-      <div class="card" data-date="2026-04-25T09:00:00">
-        <div class="subject Physics">Physics</div>
-        <div class="date">Fri 25 Apr</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Sat 26</div>
+        <div class="slot English">English Lang</div>
       </div>
 
-      <div class="card" data-date="2026-04-26T09:00:00">
-        <div class="subject English">English Lang</div>
-        <div class="date">Sat 26 Apr</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Sun 27</div>
+        <div class="slot Biology">Biology</div>
+        <div class="slot Chemistry">Chemistry</div>
       </div>
 
-      <div class="card" data-date="2026-04-27T09:00:00">
-        <div class="subject Biology">Biology</div>
-        <div class="date">Sun 27 Apr</div>
-        <div class="countdown"></div>
+      <div class="day"></div>
+      <div class="day"></div>
+      <div class="day"></div>
+      <div class="day"></div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week">
+    <div class="week-title">WEEK 2 — Apr 28–May 4</div>
+
+    <div class="grid">
+
+      <div class="day">
+        <div class="date">Mon 28</div>
+        <div class="slot Computing">Computing</div>
+        <div class="slot English">English Lang</div>
       </div>
 
-      <div class="card" data-date="2026-04-28T09:00:00">
-        <div class="subject Chemistry">Chemistry</div>
-        <div class="date">Mon 28 Apr</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Tue 29</div>
+        <div class="slot PE">PE</div>
+        <div class="slot Maths">Maths</div>
       </div>
 
-      <div class="card" data-date="2026-04-28T09:00:00">
-        <div class="subject Computing">Computing</div>
-        <div class="date">Mon 28 Apr</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Wed 30</div>
+        <div class="slot Physics">Physics</div>
+        <div class="slot Chemistry">Chemistry</div>
+      </div>
+
+      <div class="day">
+        <div class="date">Thu 1</div>
+        <div class="slot Business">Business</div>
+        <div class="slot Biology">Biology</div>
+      </div>
+
+      <div class="day">
+        <div class="date">Fri 2</div>
+        <div class="slot Geography">Geography</div>
+        <div class="slot Computing">Computing</div>
+      </div>
+
+      <div class="day">
+        <div class="date">Sat 3</div>
+        <div class="slot English">English Lit</div>
+        <div class="slot Maths">Maths</div>
+      </div>
+
+      <div class="day">
+        <div class="date">Sun 4</div>
+        <div class="slot Physics">Physics</div>
+        <div class="slot Chemistry">Chemistry</div>
       </div>
 
     </div>
   </div>
 
-  <div class="phase">
-    <div class="phase-title">PHASE 2 — EXAM SEASON</div>
+  <!-- WEEK 3 -->
+  <div class="week">
+    <div class="week-title">WEEK 3 — May 5–10</div>
+
     <div class="grid">
 
-      <div class="card" data-date="2026-05-11T09:00:00">
-        <div class="subject English">English Lit P1</div>
-        <div class="date">Mon 11 May</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Mon 5</div>
+        <div class="slot Further">Further Maths</div>
+        <div class="slot Maths">Maths</div>
       </div>
 
-      <div class="card" data-date="2026-05-12T09:00:00">
-        <div class="subject Biology">Biology P1</div>
-        <div class="date">Tue 12 May</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Tue 6</div>
+        <div class="slot English">English Lit</div>
+        <div class="slot Physics">Physics</div>
       </div>
 
-      <div class="card" data-date="2026-05-14T09:00:00">
-        <div class="subject Maths">Maths P1</div>
-        <div class="date">Thu 14 May</div>
-        <div class="countdown"></div>
+      <div class="day">
+        <div class="date">Wed 7</div>
+        <div class="slot Geography">Geography</div>
+        <div class="slot Business">Business</div>
       </div>
+
+      <div class="day">
+        <div class="date">Thu 8</div>
+        <div class="slot Further">Further Maths</div>
+        <div class="slot Biology">Biology</div>
+      </div>
+
+      <div class="day">
+        <div class="date">Fri 9</div>
+        <div class="slot English">English Lit</div>
+        <div class="slot Computing">Computing</div>
+      </div>
+
+      <div class="day">
+        <div class="date">Sat 10</div>
+        <div class="slot Chemistry">Chemistry</div>
+        <div class="slot PE">PE</div>
+      </div>
+
+      <div class="day"></div>
 
     </div>
   </div>
 
 </div>
 
-<script>
-function updateCountdowns() {
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach(card => {
-    const examDate = new Date(card.dataset.date).getTime();
-    const now = new Date().getTime();
-    const diff = examDate - now;
-
-    const el = card.querySelector(".countdown");
-
-    if (diff <= 0) {
-      el.innerHTML = "🔥 Exam day / completed";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-    el.innerHTML = `⏳ ${days}d ${hours}h left`;
-  });
-}
-
-updateCountdowns();
-setInterval(updateCountdowns, 60000);
-</script>
-
 </body>
+</html>
