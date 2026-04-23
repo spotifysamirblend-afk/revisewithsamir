@@ -1,103 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Revision Timetable</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GCSE 2026 Revision Dashboard</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: white;
+  }
 
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      backdrop-filter: blur(10px);
-    }
+  header {
+    padding: 25px;
+    text-align: center;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+  }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 2rem;
-    }
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
 
-    p {
-      text-align: center;
-      opacity: 0.8;
-      margin-bottom: 20px;
-    }
+  .container {
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+  }
 
-    iframe {
-      width: 100%;
-      height: 70vh;
-      border: none;
-      border-radius: 12px;
-      background: white;
-    }
+  .phase {
+    margin-bottom: 40px;
+  }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      margin-top: 15px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+  .phase-title {
+    font-size: 1.3rem;
+    margin: 15px 0;
+    color: #93c5fd;
+  }
 
-    .btn {
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      background: #3b82f6;
-      transition: 0.2s;
-      font-weight: bold;
-    }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
 
-    .btn:hover {
-      background: #2563eb;
-      transform: scale(1.05);
-    }
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+    background: #111827;
+    border: 1px solid #1f2937;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: 0.2s;
+  }
 
-    .note {
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.7;
-      margin-top: 10px;
-    }
-  </style>
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  .subject {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .Maths { background:#f59e0b; }
+  .Physics { background:#3b82f6; }
+  .Chemistry { background:#10b981; }
+  .Biology { background:#22c55e; }
+  .English { background:#ef4444; }
+  .Geography { background:#06b6d4; }
+  .Computing { background:#a855f7; }
+  .Business { background:#f97316; }
+  .PE { background:#eab308; }
+  .Further { background:#ec4899; }
+
+  .countdown {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+  }
+
+  .date {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>📚 My Revision Timetable</h1>
-    <p>Stay consistent. Stick to the plan. Smash your exams.</p>
 
-    <iframe src="revision-timetable.pdf">
-      <p>Your browser can’t display PDFs.
-         <a href="revision-timetable.pdf">Download it here</a>.
-      </p>
-    </iframe>
+<header>
+  <h1>📚 GCSE 2026 Revision Dashboard</h1>
+  <p>Live countdown to every exam — stay ahead</p>
+</header>
 
-    <div class="buttons">
-      <a class="btn" href="revision-timetable.pdf" download>⬇ Download PDF</a>
-      <a class="btn" href="revision-timetable.pdf" target="_blank">🔍 Open Full Screen</a>
-    </div>
+<div class="container">
 
-    <div class="note">
-      Tip: Bookmark this page so you don’t lose your timetable.
+  <div class="phase">
+    <div class="phase-title">PHASE 1 — PRE-EXAM PUSH</div>
+    <div class="grid">
+
+      <div class="card" data-date="2026-04-25T09:00:00">
+        <div class="subject Maths">Maths</div>
+        <div class="date">Fri 25 Apr</div>
+        <div class="countdown"></div>
+      </div>
+
+      <div class="card" data-date="2026-04-25T09:00:00">
+        <div class="subject Physics">Physics</div>
+        <div class="date">Fri 25 Apr</div>
+        <div class="countdown"></div>
+      </div>
+
+      <div class="card" data-date="2026-04-26T09:00:00">
+        <div class="subject English">English Lang</div>
+        <div class="date">Sat 26 Apr</div>
+        <div class="countdown"></div>
+      </div>
+
+      <div class="card" data-date="2026-04-27T09:00:00">
+        <div class="subject Biology">Biology</div>
+        <div class="date">Sun 27 Apr</div>
+        <div class="countdown"></div>
+      </div>
+
+      <div class="card" data-date="2026-04-28T09:00:00">
+        <div class="subject Chemistry">Chemistry</div>
+        <div class="date">Mon 28 Apr</div>
+        <div class="countdown"></div>
+      </div>
+
+      <div class="card" data-date="2026-04-28T09:00:00">
+        <div class="subject Computing">Computing</div>
+        <div class="date">Mon 28 Apr</div>
+        <div class="countdown"></div>
+      </div>
+
     </div>
   </div>
+
+  <div class="phase">
+    <div class="phase-title">PHASE 2 — EXAM SEASON</div>
+    <div class="grid">
+
+      <div class="card" data-date="2026-05-11T09:00:00">
+        <div class="subject English">English Lit P1</div>
+        <div class="date">Mon 11 May</div>
+        <div class="countdown"></div>
+      </div>
+
+      <div class="card" data-date="2026-05-12T09:00:00">
+        <div class="subject Biology">Biology P1</div>
+        <div class="date">Tue 12 May</div>
+        <div class="countdown"></div>
+      </div>
+
+      <div class="card" data-date="2026-05-14T09:00:00">
+        <div class="subject Maths">Maths P1</div>
+        <div class="date">Thu 14 May</div>
+        <div class="countdown"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function updateCountdowns() {
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    const examDate = new Date(card.dataset.date).getTime();
+    const now = new Date().getTime();
+    const diff = examDate - now;
+
+    const el = card.querySelector(".countdown");
+
+    if (diff <= 0) {
+      el.innerHTML = "🔥 Exam day / completed";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+    el.innerHTML = `⏳ ${days}d ${hours}h left`;
+  });
+}
+
+updateCountdowns();
+setInterval(updateCountdowns, 60000);
+</script>
+
 </body>
-</html>
