@@ -4,38 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GCSE 2026 — Revision Timetable</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap)" rel="stylesheet">
 <style>
 /* ─── RESET & BASE ─────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
 :root {
-  --bg:       #080810;
-  --surface:  #0f0f1a;
-  --border:   #1c1c2e;
-  --border2:  #2a2a40;
+  --bg:       #05050e;
+  --surface:  #0a0a16;
+  --surface2: #0d0d1f;
+  --border:   #14142a;
+  --border2:  #1e1e38;
+  --border3:  #2a2a48;
   --accent:   #b8ff3c;
   --accent2:  #3cffb8;
-  --text:     #e8e8f0;
-  --muted:    #4a4a6a;
-  --muted2:   #6a6a8a;
-
-  /* subject colours */
-  --maths-bg:#1c2e00; --maths-b:#4d7a00; --maths-t:#b8ff3c;
-  --fm-bg:#152400;    --fm-b:#3a6000;    --fm-t:#90d020;
-  --bio-bg:#002818;   --bio-b:#006644;   --bio-t:#3cffc0;
-  --chem-bg:#001c28;  --chem-b:#004d6e;  --chem-t:#3ccfff;
-  --phys-bg:#08082a;  --phys-b:#2222aa;  --phys-t:#7ab0ff;
-  --cs-bg:#1c001c;    --cs-b:#6a006a;    --cs-t:#d88aff;
-  --elit-bg:#280010;  --elit-b:#6e0030;  --elit-t:#ff8ab0;
-  --elang-bg:#200010; --elang-b:#5a0028; --elang-t:#ffaac8;
-  --geo-bg:#1c1000;   --geo-b:#6a4400;   --geo-t:#ffd84d;
-  --bus-bg:#220000;   --bus-b:#6e0000;   --bus-t:#ff6060;
-  --pe-bg:#001428;    --pe-b:#003870;    --pe-t:#60c8ff;
+  --accent3:  #7b61ff;
+  --text:     #eeeef8;
+  --muted:    #3a3a5a;
+  --muted2:   #5a5a80;
+  --muted3:   #7a7a9a;
+  --maths-bg:#1a2b00; --maths-b:#4d7a00; --maths-t:#b8ff3c; --maths-glow: rgba(184,255,60,0.15);
+  --fm-bg:#122000;    --fm-b:#3a6000;    --fm-t:#90d020;    --fm-glow: rgba(144,208,32,0.12);
+  --bio-bg:#002518;   --bio-b:#006644;   --bio-t:#3cffc0;   --bio-glow: rgba(60,255,192,0.12);
+  --chem-bg:#001a26;  --chem-b:#004d6e;  --chem-t:#3ccfff;  --chem-glow: rgba(60,207,255,0.12);
+  --phys-bg:#060626;  --phys-b:#2222aa;  --phys-t:#7ab0ff;  --phys-glow: rgba(122,176,255,0.12);
+  --cs-bg:#1a001a;    --cs-b:#6a006a;    --cs-t:#d88aff;    --cs-glow: rgba(216,138,255,0.12);
+  --elit-bg:#260010;  --elit-b:#6e0030;  --elit-t:#ff8ab0;  --elit-glow: rgba(255,138,176,0.12);
+  --elang-bg:#1e0010; --elang-b:#5a0028; --elang-t:#ffaac8; --elang-glow: rgba(255,170,200,0.12);
+  --geo-bg:#1a1000;   --geo-b:#6a4400;   --geo-t:#ffd84d;   --geo-glow: rgba(255,216,77,0.12);
+  --bus-bg:#200000;   --bus-b:#6e0000;   --bus-t:#ff6060;   --bus-glow: rgba(255,96,96,0.12);
+  --pe-bg:#001226;    --pe-b:#003870;    --pe-t:#60c8ff;    --pe-glow: rgba(96,200,255,0.12);
 }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -45,124 +44,183 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
-
+/* ─── ANIMATED BACKGROUND ──────────────────────── */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  animation: orbFloat 20s ease-in-out infinite;
+}
+.bg-orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(184,255,60,0.04) 0%, transparent 70%);
+  top: -200px; left: -200px;
+  animation-delay: 0s;
+}
+.bg-orb-2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(60,255,184,0.035) 0%, transparent 70%);
+  top: 40%; right: -150px;
+  animation-delay: -7s;
+}
+.bg-orb-3 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(123,97,255,0.03) 0%, transparent 70%);
+  bottom: 10%; left: 20%;
+  animation-delay: -14s;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33%       { transform: translate(30px,-40px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
 /* ─── GRAIN OVERLAY ────────────────────────────── */
 body::before {
   content:'';
   position:fixed; inset:0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='[w3.org](http://www.w3.org/2000/svg)' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.018;
   pointer-events: none;
   z-index: 1000;
 }
-
 /* ─── GRID BG ───────────────────────────────────── */
 body::after {
   content:'';
   position:fixed; inset:0;
   background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.4;
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 44px 44px;
   pointer-events: none;
   z-index: 0;
 }
-
 .wrap {
-  max-width: 860px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 0 20px 100px;
+  padding: 0 24px 120px;
   position: relative;
   z-index: 1;
 }
-
 /* ─── HERO ──────────────────────────────────────── */
 .hero {
-  padding: 60px 0 40px;
+  padding: 70px 0 44px;
   border-bottom: 1px solid var(--border2);
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
-
 .hero-top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
   flex-wrap: wrap;
 }
-
 .hero-left { flex: 1; min-width: 200px; }
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 10px;
-  letter-spacing: .25em;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp .6s .1s forwards;
 }
 .eyebrow::before {
   content:'';
   display:block;
-  width:20px; height:1px;
-  background: var(--accent);
+  width:24px; height:1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
-
+.eyebrow-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
 h1 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(36px, 7vw, 68px);
+  font-size: clamp(38px, 7.5vw, 72px);
   font-weight: 800;
-  line-height: .95;
-  letter-spacing: -.03em;
+  line-height: .92;
+  letter-spacing: -.04em;
   color: var(--text);
+  opacity: 0;
+  animation: fadeUp .7s .2s forwards;
 }
-h1 .hl { color: var(--accent); }
-
+h1 .hl {
+  color: transparent;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  position: relative;
+}
 .tagline {
-  margin-top: 14px;
-  font-size: 11px;
-  color: var(--muted2);
-  letter-spacing: .08em;
+  margin-top: 16px;
+  font-size: 10px;
+  color: var(--muted3);
+  letter-spacing: .1em;
+  opacity: 0;
+  animation: fadeUp .7s .35s forwards;
 }
-
+.tagline-sep { color: var(--muted); margin: 0 6px; }
 /* ─── COUNTDOWN ─────────────────────────────────── */
 .countdown-box {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 8px;
-  padding: 20px 24px;
-  min-width: 220px;
+  background: rgba(10,10,22,0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border3);
+  border-radius: 12px;
+  padding: 22px 26px;
+  min-width: 240px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  animation: fadeUp .7s .4s forwards;
+  transition: border-color .3s;
 }
+.countdown-box:hover { border-color: rgba(184,255,60,0.3); }
 .countdown-box::before {
   content:'';
   position:absolute;
-  top:-40px; right:-40px;
-  width:120px; height:120px;
-  background: radial-gradient(circle, rgba(184,255,60,.12) 0%, transparent 70%);
+  top:-60px; right:-60px;
+  width:180px; height:180px;
+  background: radial-gradient(circle, rgba(184,255,60,0.08) 0%, transparent 65%);
   pointer-events:none;
+}
+.countdown-box::after {
+  content:'';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,255,60,0.4), transparent);
 }
 .countdown-label {
   font-size: 9px;
-  letter-spacing: .2em;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--muted2);
   margin-bottom: 8px;
 }
 .countdown-subject {
   font-family: 'Syne', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 0 20px rgba(184,255,60,0.4);
 }
 .countdown-digits {
   display: flex;
@@ -172,280 +230,421 @@ h1 .hl { color: var(--accent); }
 .cd-unit { text-align: center; }
 .cd-num {
   font-family: 'Syne', sans-serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--text);
   line-height: 1;
   display: block;
-  min-width: 44px;
-  background: var(--border);
-  border-radius: 4px;
-  padding: 4px 6px;
+  min-width: 46px;
+  background: var(--border2);
+  border: 1px solid var(--border3);
+  border-radius: 6px;
+  padding: 6px 8px;
   text-align: center;
+  transition: color .2s;
+  font-variant-numeric: tabular-nums;
 }
 .cd-lbl {
-  font-size: 8px;
-  color: var(--muted);
-  letter-spacing: .15em;
+  font-size: 7px;
+  color: var(--muted2);
+  letter-spacing: .18em;
   text-transform: uppercase;
-  margin-top: 3px;
+  margin-top: 4px;
   display: block;
   text-align: center;
 }
 .cd-sep {
   font-family: 'Syne', sans-serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--muted);
-  padding-bottom: 6px;
+  padding-bottom: 8px;
+  animation: sepBlink 2s ease-in-out infinite;
 }
-
+@keyframes sepBlink {
+  0%,100% { opacity:1; }
+  50%      { opacity:.3; }
+}
 /* ─── NEXT EXAM STRIP ───────────────────────────── */
 .next-exams {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 .exam-chip {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--surface);
+  gap: 12px;
+  background: rgba(10,10,22,0.7);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border2);
-  border-radius: 6px;
-  padding: 10px 14px;
+  border-radius: 8px;
+  padding: 12px 16px;
   flex: 1;
   min-width: 160px;
-  transition: border-color .2s;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp .5s forwards;
 }
-.exam-chip:hover { border-color: var(--muted2); }
+.exam-chip:nth-child(1) { animation-delay: .5s; }
+.exam-chip:nth-child(2) { animation-delay: .6s; }
+.exam-chip:nth-child(3) { animation-delay: .7s; }
+.exam-chip::before {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(184,255,60,0.03) 0%, transparent 60%);
+  opacity:0;
+  transition: opacity .3s;
+}
+.exam-chip:hover {
+  border-color: rgba(184,255,60,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+.exam-chip:hover::before { opacity:1; }
 .exam-chip-dot {
-  width: 7px; height: 7px;
+  width: 8px; height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
   background: var(--accent);
+  box-shadow: 0 0 10px rgba(184,255,60,0.6);
+  animation: pulse 2s ease-in-out infinite;
 }
 .exam-chip-info { flex:1; }
 .exam-chip-name { font-size: 11px; font-weight: 500; color: var(--text); }
-.exam-chip-date { font-size: 9px; color: var(--muted2); margin-top: 1px; letter-spacing:.06em; }
+.exam-chip-date { font-size: 9px; color: var(--muted3); margin-top: 2px; letter-spacing:.07em; }
 .exam-chip-days {
   font-family: 'Syne', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--accent);
+  text-shadow: 0 0 16px rgba(184,255,60,0.4);
 }
-.exam-chip-days span { font-size: 9px; color: var(--muted); letter-spacing:.1em; display:block; text-align:right; margin-top:-2px; }
-
-/* ─── LEGEND ────────────────────────────────────── */
-.legend-wrap {
-  margin-bottom: 32px;
-}
-.legend-title {
-  font-size: 9px; letter-spacing:.2em; text-transform:uppercase;
-  color: var(--muted); margin-bottom: 10px;
-}
-.legend {
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.leg {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 10px; color: var(--muted2);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 99px;
-  padding: 4px 10px 4px 8px;
-}
-.leg-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-
-/* ─── PHASE HEADER ──────────────────────────────── */
-.phase {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 36px 0 10px;
-}
-.phase-line { flex:1; height:1px; background: var(--border2); }
-.phase-text {
-  font-size: 9px; letter-spacing:.2em; text-transform:uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.phase-dot {
-  width:6px; height:6px; border-radius:50%;
-  background: var(--accent);
-  flex-shrink:0;
-}
-
-/* ─── WEEK LABEL ────────────────────────────────── */
-.week-label {
-  font-size: 9px; letter-spacing:.15em; text-transform:uppercase;
-  color: var(--muted); margin: 16px 0 6px;
-  padding-left: 4px;
-}
-
-/* ─── DAY ROW ───────────────────────────────────── */
-.day {
-  display: grid;
-  grid-template-columns: 82px 1fr 1fr;
-  gap: 5px;
-  margin-bottom: 4px;
-  align-items: stretch;
-  opacity: 0;
-  animation: fadeUp .4s forwards;
-}
-
-.day:nth-child(1)  { animation-delay: .02s }
-.day:nth-child(2)  { animation-delay: .04s }
-.day:nth-child(3)  { animation-delay: .06s }
-.day:nth-child(4)  { animation-delay: .08s }
-.day:nth-child(5)  { animation-delay: .10s }
-.day:nth-child(6)  { animation-delay: .12s }
-.day:nth-child(7)  { animation-delay: .14s }
-.day:nth-child(8)  { animation-delay: .16s }
-.day:nth-child(9)  { animation-delay: .18s }
-.day:nth-child(10) { animation-delay: .20s }
-
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(6px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-
-.day-name {
-  font-size: 9px; letter-spacing:.08em; text-transform:uppercase;
-  color: var(--muted); display:flex; align-items:center;
-  padding-left: 2px;
-}
-.day-name.is-today { color: var(--accent); font-weight:500; }
-
-.pill {
-  padding: 9px 13px;
-  border-radius: 5px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .04em;
-  border: 1px solid transparent;
-  cursor: default;
-  transition: transform .15s, filter .15s;
-  position: relative;
-  overflow: hidden;
-}
-.pill::after {
-  content:'';
-  position:absolute; inset:0;
-  background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, transparent 60%);
-  pointer-events:none;
-}
-.pill:hover { transform: translateY(-1px); filter: brightness(1.15); }
-
-/* Subject pill colours */
-.maths    { background:var(--maths-bg);  border-color:var(--maths-b);  color:var(--maths-t); }
-.fm       { background:var(--fm-bg);     border-color:var(--fm-b);     color:var(--fm-t); }
-.bio      { background:var(--bio-bg);    border-color:var(--bio-b);    color:var(--bio-t); }
-.chem     { background:var(--chem-bg);   border-color:var(--chem-b);   color:var(--chem-t); }
-.phys     { background:var(--phys-bg);   border-color:var(--phys-b);   color:var(--phys-t); }
-.cs       { background:var(--cs-bg);     border-color:var(--cs-b);     color:var(--cs-t); }
-.eng-lit  { background:var(--elit-bg);   border-color:var(--elit-b);   color:var(--elit-t); }
-.eng-lang { background:var(--elang-bg);  border-color:var(--elang-b);  color:var(--elang-t); }
-.geo      { background:var(--geo-bg);    border-color:var(--geo-b);    color:var(--geo-t); }
-.bus      { background:var(--bus-bg);    border-color:var(--bus-b);    color:var(--bus-t); }
-.pe       { background:var(--pe-bg);     border-color:var(--pe-b);     color:var(--pe-t); }
-.exam-day {
-  background: linear-gradient(135deg, #1c1c00, #141400);
-  border-color: var(--accent);
-  color: var(--accent);
-  font-size: 10px;
-  letter-spacing: .06em;
-}
-
-/* ─── PROGRESS BAR ──────────────────────────────── */
+.exam-chip-days span { font-size: 8px; color: var(--muted2); letter-spacing:.12em; display:block; text-align:right; margin-top:-2px; }
+/* ─── PROGRESS ──────────────────────────────────── */
 .progress-section {
   margin-bottom: 32px;
-  background: var(--surface);
+  background: rgba(10,10,22,0.7);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border2);
-  border-radius: 8px;
-  padding: 18px 20px;
+  border-radius: 10px;
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp .6s .8s forwards;
+}
+.progress-section::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, rgba(60,255,184,0.3), transparent);
 }
 .progress-title {
-  font-size: 9px; letter-spacing:.2em; text-transform:uppercase;
-  color: var(--muted); margin-bottom: 14px;
+  font-size: 9px; letter-spacing:.22em; text-transform:uppercase;
+  color: var(--muted2); margin-bottom: 14px;
 }
-.progress-bar-wrap { margin-bottom: 8px; }
+.progress-bar-wrap { margin-bottom: 4px; }
 .progress-bar-label {
   display: flex; justify-content:space-between;
-  font-size: 10px; color: var(--muted2);
-  margin-bottom: 5px;
+  font-size: 10px; color: var(--muted3);
+  margin-bottom: 8px;
 }
-.progress-bar-label span:last-child { color: var(--accent); }
+.progress-bar-label span:last-child {
+  color: var(--accent);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
 .bar-track {
-  height: 4px;
+  height: 5px;
   background: var(--border2);
   border-radius: 99px;
   overflow: hidden;
+  position: relative;
 }
 .bar-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--accent2), var(--accent));
   border-radius: 99px;
-  transition: width 1s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+  transition: width 1.4s cubic-bezier(.4,0,.2,1);
+  position: relative;
 }
-
+.bar-fill::after {
+  content:'';
+  position:absolute; top:0; right:0;
+  width: 20px; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5));
+  animation: shimmer 2s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { opacity:0; transform: scaleX(0); transform-origin: right; }
+  50%  { opacity:1; }
+  100% { opacity:0; }
+}
+/* ─── LEGEND ────────────────────────────────────── */
+.legend-wrap {
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp .6s .9s forwards;
+}
+.legend-title {
+  font-size: 9px; letter-spacing:.22em; text-transform:uppercase;
+  color: var(--muted2); margin-bottom: 12px;
+}
+.legend {
+  display: flex; flex-wrap: wrap; gap: 7px;
+}
+.leg {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 10px; color: var(--muted3);
+  background: rgba(10,10,22,0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border2);
+  border-radius: 99px;
+  padding: 5px 12px 5px 9px;
+  transition: border-color .2s, color .2s, transform .2s;
+  cursor: default;
+}
+.leg:hover {
+  border-color: var(--border3);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+.leg-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+/* ─── PHASE HEADER ──────────────────────────────── */
+.phase {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 40px 0 12px;
+}
+.phase-line {
+  flex:1; height:1px;
+  background: linear-gradient(90deg, var(--border3), transparent);
+}
+.phase-text {
+  font-size: 9px; letter-spacing:.2em; text-transform:uppercase;
+  color: var(--muted2);
+  white-space: nowrap;
+}
+.phase-dot {
+  width:6px; height:6px; border-radius:50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(184,255,60,0.6);
+  flex-shrink:0;
+}
+/* ─── WEEK LABEL ────────────────────────────────── */
+.week-label {
+  font-size: 9px; letter-spacing:.16em; text-transform:uppercase;
+  color: var(--muted); margin: 18px 0 8px;
+  padding-left: 6px;
+  border-left: 2px solid var(--border3);
+}
+/* ─── DAY ROW ───────────────────────────────────── */
+.day {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 5px;
+  align-items: stretch;
+  opacity: 0;
+  animation: fadeUp .45s forwards;
+}
+.day:nth-child(1)  { animation-delay: .02s }
+.day:nth-child(2)  { animation-delay: .05s }
+.day:nth-child(3)  { animation-delay: .08s }
+.day:nth-child(4)  { animation-delay: .11s }
+.day:nth-child(5)  { animation-delay: .14s }
+.day:nth-child(6)  { animation-delay: .17s }
+.day:nth-child(7)  { animation-delay: .20s }
+.day:nth-child(8)  { animation-delay: .23s }
+.day:nth-child(9)  { animation-delay: .26s }
+.day:nth-child(10) { animation-delay: .29s }
+.day:nth-child(11) { animation-delay: .32s }
+.day:nth-child(12) { animation-delay: .35s }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.day-name {
+  font-size: 9px; letter-spacing:.09em; text-transform:uppercase;
+  color: var(--muted2); display:flex; align-items:center;
+  padding-left: 4px;
+  transition: color .2s;
+}
+.day-name.is-today {
+  color: var(--accent);
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(184,255,60,0.4);
+}
+.pill {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  border: 1px solid transparent;
+  cursor: default;
+  transition: transform .2s cubic-bezier(.4,0,.2,1),
+              filter .2s,
+              box-shadow .2s;
+  position: relative;
+  overflow: hidden;
+}
+.pill::before {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 55%);
+  pointer-events:none;
+}
+.pill::after {
+  content:'';
+  position:absolute;
+  top:0; left:-100%;
+  width:60%; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transition: left .5s ease;
+}
+.pill:hover::after { left: 140%; }
+.pill:hover {
+  transform: translateY(-2px) scale(1.01);
+  filter: brightness(1.2);
+}
+/* Subject pill colours */
+.maths    { background:var(--maths-bg);  border-color:var(--maths-b);  color:var(--maths-t); }
+.maths:hover    { box-shadow: 0 6px 20px var(--maths-glow); }
+.fm       { background:var(--fm-bg);     border-color:var(--fm-b);     color:var(--fm-t); }
+.fm:hover       { box-shadow: 0 6px 20px var(--fm-glow); }
+.bio      { background:var(--bio-bg);    border-color:var(--bio-b);    color:var(--bio-t); }
+.bio:hover      { box-shadow: 0 6px 20px var(--bio-glow); }
+.chem     { background:var(--chem-bg);   border-color:var(--chem-b);   color:var(--chem-t); }
+.chem:hover     { box-shadow: 0 6px 20px var(--chem-glow); }
+.phys     { background:var(--phys-bg);   border-color:var(--phys-b);   color:var(--phys-t); }
+.phys:hover     { box-shadow: 0 6px 20px var(--phys-glow); }
+.cs       { background:var(--cs-bg);     border-color:var(--cs-b);     color:var(--cs-t); }
+.cs:hover       { box-shadow: 0 6px 20px var(--cs-glow); }
+.eng-lit  { background:var(--elit-bg);   border-color:var(--elit-b);   color:var(--elit-t); }
+.eng-lit:hover  { box-shadow: 0 6px 20px var(--elit-glow); }
+.eng-lang { background:var(--elang-bg);  border-color:var(--elang-b);  color:var(--elang-t); }
+.eng-lang:hover { box-shadow: 0 6px 20px var(--elang-glow); }
+.geo      { background:var(--geo-bg);    border-color:var(--geo-b);    color:var(--geo-t); }
+.geo:hover      { box-shadow: 0 6px 20px var(--geo-glow); }
+.bus      { background:var(--bus-bg);    border-color:var(--bus-b);    color:var(--bus-t); }
+.bus:hover      { box-shadow: 0 6px 20px var(--bus-glow); }
+.pe       { background:var(--pe-bg);     border-color:var(--pe-b);     color:var(--pe-t); }
+.pe:hover       { box-shadow: 0 6px 20px var(--pe-glow); }
+.exam-day {
+  background: linear-gradient(135deg, #181800, #121200);
+  border-color: rgba(184,255,60,0.5);
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: .07em;
+  box-shadow: 0 0 12px rgba(184,255,60,0.06), inset 0 0 12px rgba(184,255,60,0.03);
+  animation: examPulse 3s ease-in-out infinite;
+}
+.exam-day:hover {
+  box-shadow: 0 6px 24px rgba(184,255,60,0.2), inset 0 0 16px rgba(184,255,60,0.05) !important;
+  border-color: var(--accent) !important;
+}
+@keyframes examPulse {
+  0%,100% { box-shadow: 0 0 10px rgba(184,255,60,0.06), inset 0 0 10px rgba(184,255,60,0.03); }
+  50%      { box-shadow: 0 0 18px rgba(184,255,60,0.12), inset 0 0 16px rgba(184,255,60,0.06); }
+}
 /* ─── NOTES ─────────────────────────────────────── */
 .notes {
-  margin-top: 40px;
-  padding: 18px 20px;
+  margin-top: 44px;
+  padding: 22px 24px;
   border: 1px solid var(--border2);
-  border-radius: 8px;
-  background: var(--surface);
+  border-radius: 12px;
+  background: rgba(10,10,22,0.7);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+.notes::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, rgba(184,255,60,0.25), transparent);
 }
 .notes-title {
-  font-size: 9px; letter-spacing:.2em; text-transform:uppercase;
-  color: var(--accent); margin-bottom: 12px;
+  font-size: 9px; letter-spacing:.22em; text-transform:uppercase;
+  color: var(--accent); margin-bottom: 14px;
+  text-shadow: 0 0 12px rgba(184,255,60,0.4);
 }
 .note-item {
-  display: flex; gap: 10px;
-  font-size: 11px; color: var(--muted2);
-  line-height: 1.6;
-  margin-bottom: 6px;
+  display: flex; gap: 12px;
+  font-size: 11px; color: var(--muted3);
+  line-height: 1.7;
+  margin-bottom: 7px;
+  transition: color .2s;
 }
-.note-item::before { content:'→'; color: var(--muted); flex-shrink:0; }
+.note-item:hover { color: var(--muted3); }
+.note-item::before { content:'→'; color: var(--muted); flex-shrink:0; transition: color .2s; }
+.note-item:hover::before { color: var(--accent); }
 .note-item strong { color: var(--text); }
-
+/* ─── SCROLL INDICATOR ──────────────────────────── */
+.scroll-fade {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(transparent, var(--bg));
+  pointer-events: none;
+  z-index: 900;
+}
 /* ─── FOOTER ─────────────────────────────────────── */
 footer {
-  margin-top: 60px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
+  margin-top: 64px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+  position: relative;
 }
-.footer-text { font-size: 9px; color: var(--muted); letter-spacing:.1em; }
-.footer-accent { color: var(--accent); }
-
+footer::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+  opacity: 0.3;
+}
+.footer-text { font-size: 9px; color: var(--muted); letter-spacing:.12em; }
+.footer-accent { color: var(--accent); text-shadow: 0 0 10px rgba(184,255,60,0.4); }
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width: 560px) {
-  .day { grid-template-columns: 58px 1fr 1fr; gap:3px; }
-  .pill { padding: 8px 8px; font-size: 10px; }
+  .day { grid-template-columns: 60px 1fr 1fr; gap:4px; }
+  .pill { padding: 8px 9px; font-size: 10px; }
   .hero-top { flex-direction: column; }
   .countdown-box { width: 100%; }
+  h1 { letter-spacing: -.03em; }
 }
 </style>
 </head>
 <body>
+<!-- Animated background orbs -->
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
 <div class="wrap">
-
   <!-- ── HERO ── -->
   <div class="hero">
     <div class="hero-top">
       <div class="hero-left">
-        <div class="eyebrow">GCSE 2026</div>
+        <div class="eyebrow"><div class="eyebrow-dot"></div>GCSE 2026</div>
         <h1>Revision<br><span class="hl">Timetable</span></h1>
-        <p class="tagline">2 subjects / day &nbsp;·&nbsp; starts 25 APR &nbsp;·&nbsp; 11 subjects</p>
+        <p class="tagline">
+          2 subjects / day
+          <span class="tagline-sep">·</span>
+          starts 25 APR
+          <span class="tagline-sep">·</span>
+          11 subjects
+        </p>
       </div>
-
       <!-- COUNTDOWN -->
       <div class="countdown-box">
         <div class="countdown-label">// next exam</div>
@@ -474,10 +673,8 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- ── NEXT 3 EXAMS ── -->
   <div class="next-exams" id="next-exams-strip"></div>
-
   <!-- ── PROGRESS ── -->
   <div class="progress-section">
     <div class="progress-title">// exam season progress</div>
@@ -489,7 +686,6 @@ footer {
       <div class="bar-track"><div class="bar-fill" id="prog-bar" style="width:0%"></div></div>
     </div>
   </div>
-
   <!-- ── LEGEND ── -->
   <div class="legend-wrap">
     <div class="legend-title">// subjects</div>
@@ -507,17 +703,14 @@ footer {
       <div class="leg"><div class="leg-dot" style="background:#003870"></div>PE</div>
     </div>
   </div>
-
   <!-- ══════════════════════════════════════════
        PHASE 1
   ══════════════════════════════════════════ -->
   <div class="phase"><div class="phase-dot"></div><div class="phase-text">Phase 1 — Pre-Exam Push · Apr 25 – May 10</div><div class="phase-line"></div></div>
-
   <div class="week-label">Week 1 — Apr 25–27</div>
   <div class="day"><div class="day-name">Fri 25</div><div class="pill maths">Maths</div><div class="pill phys">Physics</div></div>
   <div class="day"><div class="day-name">Sat 26</div><div class="pill bio">Biology</div><div class="pill eng-lit">English Lit</div></div>
   <div class="day"><div class="day-name">Sun 27</div><div class="pill chem">Chemistry</div><div class="pill geo">Geography</div></div>
-
   <div class="week-label">Week 2 — Apr 28 – May 4</div>
   <div class="day"><div class="day-name">Mon 28</div><div class="pill cs">Computing</div><div class="pill bus">Business</div></div>
   <div class="day"><div class="day-name">Tue 29</div><div class="pill eng-lang">English Lang</div><div class="pill fm">Further Maths</div></div>
@@ -526,7 +719,6 @@ footer {
   <div class="day"><div class="day-name">Fri 2 May</div><div class="pill phys">Physics</div><div class="pill geo">Geography</div></div>
   <div class="day"><div class="day-name">Sat 3 May</div><div class="pill chem">Chemistry</div><div class="pill cs">Computing</div></div>
   <div class="day"><div class="day-name">Sun 4 May</div><div class="pill bus">Business</div><div class="pill eng-lang">English Lang</div></div>
-
   <div class="week-label">Week 3 — May 5–10</div>
   <div class="day"><div class="day-name">Mon 5</div><div class="pill fm">Further Maths</div><div class="pill bio">Biology</div></div>
   <div class="day"><div class="day-name">Tue 6</div><div class="pill maths">Maths</div><div class="pill geo">Geography</div></div>
@@ -534,12 +726,10 @@ footer {
   <div class="day"><div class="day-name">Thu 8</div><div class="pill phys">Physics</div><div class="pill cs">Computing</div></div>
   <div class="day"><div class="day-name">Fri 9</div><div class="pill pe">PE</div><div class="pill bus">Business</div></div>
   <div class="day"><div class="day-name">Sat 10</div><div class="pill eng-lang">English Lang</div><div class="pill bio">Biology</div></div>
-
   <!-- ══════════════════════════════════════════
        PHASE 2
   ══════════════════════════════════════════ -->
   <div class="phase"><div class="phase-dot"></div><div class="phase-text">Phase 2 — Exam Season · May 11 – May 22</div><div class="phase-line"></div></div>
-
   <div class="week-label">Week 4 — May 11–17</div>
   <div class="day"><div class="day-name">Mon 11</div><div class="pill exam-day">📝 Eng Lit P1</div><div class="pill exam-day">📝 Business P1</div></div>
   <div class="day"><div class="day-name">Tue 12</div><div class="pill exam-day">📝 Biology P1</div><div class="pill geo">Geography</div></div>
@@ -548,7 +738,6 @@ footer {
   <div class="day"><div class="day-name">Fri 15</div><div class="pill eng-lit">English Lit</div><div class="pill bus">Business</div></div>
   <div class="day"><div class="day-name">Sat 16</div><div class="pill cs">Computing</div><div class="pill phys">Physics</div></div>
   <div class="day"><div class="day-name">Sun 17</div><div class="pill pe">PE</div><div class="pill eng-lang">English Lang</div></div>
-
   <div class="week-label">Week 5 — May 18–24</div>
   <div class="day"><div class="day-name">Mon 18</div><div class="pill exam-day">📝 Chemistry P1</div><div class="pill eng-lit">English Lit</div></div>
   <div class="day"><div class="day-name">Tue 19</div><div class="pill exam-day">📝 Eng Lit P2</div><div class="pill exam-day">📝 CS P2</div></div>
@@ -557,12 +746,10 @@ footer {
   <div class="day"><div class="day-name">Fri 22</div><div class="pill exam-day">📝 PE P1</div><div class="pill maths">Maths</div></div>
   <div class="day"><div class="day-name">Sat 23</div><div class="pill bio">Biology</div><div class="pill fm">Further Maths</div></div>
   <div class="day"><div class="day-name">Sun 24</div><div class="pill phys">Physics</div><div class="pill geo">Geography</div></div>
-
   <!-- ══════════════════════════════════════════
        PHASE 3
   ══════════════════════════════════════════ -->
   <div class="phase"><div class="phase-dot"></div><div class="phase-text">Phase 3 — Half Term + June Run · May 25 – Jun 15</div><div class="phase-line"></div></div>
-
   <div class="week-label">Half Term — May 25–31</div>
   <div class="day"><div class="day-name">Mon 25</div><div class="pill chem">Chemistry</div><div class="pill eng-lit">English Lit</div></div>
   <div class="day"><div class="day-name">Tue 26</div><div class="pill maths">Maths</div><div class="pill bus">Business</div></div>
@@ -571,7 +758,6 @@ footer {
   <div class="day"><div class="day-name">Fri 29</div><div class="pill pe">PE</div><div class="pill geo">Geography</div></div>
   <div class="day"><div class="day-name">Sat 30</div><div class="pill fm">Further Maths</div><div class="pill bio">Biology</div></div>
   <div class="day"><div class="day-name">Sun 31</div><div class="pill maths">Maths</div><div class="pill chem">Chemistry</div></div>
-
   <div class="week-label">Week 6 — Jun 1–7</div>
   <div class="day"><div class="day-name">Mon 1</div><div class="pill exam-day">📝 PE P2</div><div class="pill eng-lang">English Lang</div></div>
   <div class="day"><div class="day-name">Tue 2</div><div class="pill exam-day">📝 Physics P1</div><div class="pill fm">Further Maths</div></div>
@@ -580,7 +766,6 @@ footer {
   <div class="day"><div class="day-name">Fri 5</div><div class="pill exam-day">📝 Eng Lang P2</div><div class="pill exam-day">📝 Geography P2</div></div>
   <div class="day"><div class="day-name">Sat 6</div><div class="pill chem">Chemistry</div><div class="pill fm">Further Maths</div></div>
   <div class="day"><div class="day-name">Sun 7</div><div class="pill phys">Physics</div><div class="pill maths">Maths</div></div>
-
   <div class="week-label">Week 7 — Jun 8–15</div>
   <div class="day"><div class="day-name">Mon 8</div><div class="pill exam-day">📝 Biology P2</div><div class="pill exam-day">📝 Further Maths P1</div></div>
   <div class="day"><div class="day-name">Tue 9</div><div class="pill chem">Chemistry</div><div class="pill geo">Geography</div></div>
@@ -590,7 +775,6 @@ footer {
   <div class="day"><div class="day-name">Sat 13</div><div class="pill maths">Maths</div><div class="pill phys">Physics</div></div>
   <div class="day"><div class="day-name">Sun 14</div><div class="pill chem">Chemistry</div><div class="pill bio">Biology</div></div>
   <div class="day"><div class="day-name">Mon 15</div><div class="pill exam-day">📝 Physics P2</div><div class="pill exam-day">📝 Further Maths P2</div></div>
-
   <!-- ── NOTES ── -->
   <div class="notes">
     <div class="notes-title">// strategy</div>
@@ -600,16 +784,14 @@ footer {
     <div class="note-item"><strong>Chem, Physics &amp; FM</strong> increase in frequency as their June exams close in</div>
     <div class="note-item">On exam days, the second slot = light review of the next upcoming paper only</div>
   </div>
-
   <footer>
     <span class="footer-text">GCSE 2026 &nbsp;·&nbsp; <span class="footer-accent">good luck</span></span>
     <span class="footer-text" id="footer-date"></span>
   </footer>
-
 </div>
-
+<div class="scroll-fade"></div>
 <script>
-// ── ALL EXAMS (for countdown & chips) ──────────────────────
+// ── ALL EXAMS ──────────────────────────────────────────────
 const EXAMS = [
   { name: 'English Lit P1',     date: '2026-05-11' },
   { name: 'Business P1',        date: '2026-05-11' },
@@ -636,17 +818,15 @@ const EXAMS = [
   { name: 'Physics P2',         date: '2026-06-15' },
   { name: 'Further Maths P2',   date: '2026-06-15' },
 ];
-
 // ── COUNTDOWN ──────────────────────────────────────────────
 function getNextExam() {
   const now = new Date();
   return EXAMS.find(e => new Date(e.date + 'T09:00:00') > now);
 }
-
 function updateCountdown() {
   const next = getNextExam();
   if (!next) {
-    document.getElementById('cd-subject').textContent = 'All done!';
+    document.getElementById('cd-subject').textContent = 'All done! 🎉';
     return;
   }
   document.getElementById('cd-subject').textContent = next.name;
@@ -665,7 +845,6 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
 // ── NEXT EXAMS STRIP ───────────────────────────────────────
 function buildExamStrip() {
   const now = new Date();
@@ -689,7 +868,6 @@ function buildExamStrip() {
   });
 }
 buildExamStrip();
-
 // ── PROGRESS BAR ───────────────────────────────────────────
 function updateProgress() {
   const start = new Date('2026-04-25');
@@ -697,20 +875,20 @@ function updateProgress() {
   const now   = new Date();
   const pct   = Math.min(100, Math.max(0, Math.round((now - start) / (end - start) * 100)));
   document.getElementById('prog-pct').textContent = pct + '%';
-  document.getElementById('prog-bar').style.width  = pct + '%';
+  // Animate in after a short delay
+  setTimeout(() => {
+    document.getElementById('prog-bar').style.width = pct + '%';
+  }, 1000);
 }
 updateProgress();
-
 // ── TODAY HIGHLIGHT ────────────────────────────────────────
 function highlightToday() {
   const today = new Date();
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const days   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  // match patterns like "Fri 25", "Mon 28", "Thu 1 May", "Tue 2 Jun"
-  const d = today.getDate();
-  const m = today.getMonth(); // 0-indexed
+  const d   = today.getDate();
+  const m   = today.getMonth();
   const dow = days[today.getDay()];
-  // build possible label strings
   const labels = [
     `${dow} ${d}`,
     `${dow} ${d} ${months[m]}`,
@@ -719,14 +897,29 @@ function highlightToday() {
     if (labels.some(l => el.textContent.trim() === l)) {
       el.classList.add('is-today');
       el.textContent += ' ◀';
+      // Scroll it into view gently
+      setTimeout(() => {
+        el.closest('.day').scrollIntoView({ behavior:'smooth', block:'center' });
+      }, 1200);
     }
   });
 }
 highlightToday();
-
 // ── FOOTER DATE ────────────────────────────────────────────
 document.getElementById('footer-date').textContent =
   new Date().toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+// ── INTERSECTION OBSERVER for staggered reveal ─────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.day').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  observer.observe(el);
+});
 </script>
 </body>
 </html>
